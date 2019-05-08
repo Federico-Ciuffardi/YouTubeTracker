@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+
+<style>
+	.twoDigits {
+    	max-width:60px;
+	}
+	.bgDark {
+		background-color: #333;
+		color: #fff;
+	}
+</style>
+<div class="container-fluid bgDark">
+	<div class="row" style="min-width:500px;">
+		<div class="col-md-auto">
+			<div class="form-row">
+				<div class="col"> <!-- padding -->
+					<p> </p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					Tracker name: <select id="se_list" class="browser-default custom-select"></select>
+				</div>
+				<div class="col btn-group" role="group" aria-label="Basic example">
+					<button id="bu_new" type="button" class="btn btn-danger">New</button>
+					<button id="bu_rename" type="button" class="btn btn-danger">Raname</button>
+					<button id="bu_delete" type="button" class="btn btn-danger">Delete</button>
+				</div>
+
+			</div>
+			<div class="row my-1">
+				<hr>
+			</div>
+			<div class="form-row">
+				<div class="col ">
+					<div class="float-left"> <button id = "bu_pause"  type="button" class="btn btn-danger">Pause</button></div>
+				</div>
+				<div class="col ">
+					<div class="float-right"> <button id = "bu_resume"  type="button" class="btn btn-danger">Resume</button></div>
+				</div>
+			</div>
+			<div class="form-row"> <!-- padding -->
+				<div class="col">
+					<p> </p > 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="script.js"></script>
