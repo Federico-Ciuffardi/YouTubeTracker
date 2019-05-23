@@ -6,6 +6,7 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 
 //listen for time message
 chrome.runtime.onMessage.addListener(function(msg) {
+
 	trackers[se_list.value] = currentUrl.replace(/&t=[0-9]*/g, '')+"&t="+parseInt(Math.floor(msg, 10))//save current url erase previous time options and append the latest
 	saveToStorage();
 	//alert(trackers[se_list.value])
@@ -80,14 +81,16 @@ function rename() {
 //saves the current time of a youtube video on the current tab to the currently selected tracker on the popup (used when bu_pause button is pressed)
 document.getElementById("bu_pause").onclick=pause;
 function pause() {
-	if(currentUrl.indexOf("youtube.com/watch")==-1){
-		alert("Current tab does not have a youtube video to pause");
-		return
+	if(!(currentUrl.indexOf("youtube.com/watch")==-1)){
+		chrome.tabs.executeScript({
+			file: 'injectYT.js'
+		});
+		return;
 	}
-	chrome.tabs.executeScript({
-		file: 'inject.js'
-	});
-
+	trackers[se_list.value] = currentUrl//save current url
+	saveToStorage();
+	//alert(trackers[se_list.value])
+	chrome.tabs.getSelected(null, function(tab) {chrome.tabs.remove(tab.id);});//remove tab
 }
 
 //resumes the yt vid corresponding to the currently selected tracker on the popup (used when bu_resume button is pressed)
@@ -112,3 +115,7 @@ for (var name in trackers){
 	if (trackers.hasOwnProperty(name))
 	addToList(name);
 }
+se_list.value = localStorage.getItem("lastSel") ||  trackers[0]
+se_list.addEventListener("change", function(){
+	localStorage.setItem("lastSel", se_list.value);
+});
