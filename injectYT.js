@@ -1,4 +1,5 @@
-var actualCode = `window.postMessage({
+var actualCode = `
+window.postMessage({
 	secs:document.querySelector('.video-stream').getCurrentTime(), plat:"YT"
 }, '*');
 `;

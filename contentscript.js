@@ -1,5 +1,5 @@
 window.addEventListener('message', function(event) {
-	if (event.source != window) {
+	if (event.data.secs === undefined || event.source != window) {
 		return;
 	}
 	transmit(event.data.secs)

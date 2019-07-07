@@ -6,7 +6,6 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
 
 //listen for time message
 chrome.runtime.onMessage.addListener(function(msg) {
-
 	trackers[se_list.value] = currentUrl.replace(/&t=[0-9]*/g, '')+"&t="+parseInt(Math.floor(msg, 10))//save current url erase previous time options and append the latest
 	saveToStorage();
 	//alert(trackers[se_list.value])

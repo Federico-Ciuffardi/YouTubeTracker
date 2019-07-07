@@ -15,6 +15,10 @@
     "default_popup": "popup.html"
   },
 
+  "externally_connectable": {
+    "matches": ["https://www.youtube.com/*"]
+  },
+
   "content_scripts" : [
     {
       "matches" : [ "https://www.youtube.com/*","https://animeflv.net/ver/*" ],
